@@ -1,0 +1,6 @@
+{
+  "LibrespotNoInstalled": "Librespot n'est pas installé!",
+  "LibrespotError": "Librespot: {VALUES}",
+  "TBRestart": "Redémarre le serveur Librespot",
+  "TBRestarted": "Serveur redémarré, nouveaux identifiants chargés!"
+}

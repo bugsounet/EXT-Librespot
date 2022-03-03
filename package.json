@@ -1,0 +1,31 @@
+{
+  "name": "EXT-Librespot",
+  "version": "1.0.0",
+  "rev": "220302",
+  "description": "Librespot plugins for EXT-Spotify.",
+  "main": "EXT-Librespot.js",
+  "scripts": {
+    "preinstall": "installer/preinstall.sh",
+    "postinstall": "installer/postinstall.sh",
+    "update": "installer/update.sh"
+  },
+  "keywords": [
+    "magic mirror",
+    "module",
+    "spotify",
+    "librespot"
+  ],
+  "author": "bugsounet",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://forum.bugsounet.fr"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bugsounet/EXT-Librespot"
+  },
+  "homepage": "https://wiki.bugsounet.fr/en/EXT-Librespot",
+  "dependencies": {
+    "pm2": "^5.2.0"
+  }
+}
