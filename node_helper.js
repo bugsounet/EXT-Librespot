@@ -85,11 +85,11 @@ module.exports = NodeHelper.create({
           name: "librespot",
           out_file: "/dev/null",
           args: [
-            "-n", this.config.deviceName,
-            "-u", this.config.email,
-            "-p", this.config.password,
+            "--name", this.config.deviceName,
+            "--username", this.config.email,
+            "--password", this.config.password,
             "--initial-volume", this.config.maxVolume,
-            "-c", cacheDir
+            "--cache", cacheDir
           ]
         }, (err, proc) => {
           if (err) {

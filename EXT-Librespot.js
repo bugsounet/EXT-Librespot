@@ -8,16 +8,11 @@
 Module.register("EXT-Librespot", {
   defaults: {
     debug: false,
+    email: null,
+    password: null,
     deviceName: "MagicMirror",
-    email: "",
-    password: ""
-  },
-
-  start: function () {
-    /** Search EXT-Spotify Config (maxVolume) **/
-    let Spotify = config.modules.find(m => m.module == "EXT-Spotify")
-    if (Spotify) this.config.maxVolume = Spotify.config.maxVolume
-    else this.config.maxVolume = 100
+    minVolume: 50,
+    maxVolume: 100
   },
 
   getDom: function() {
