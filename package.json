@@ -1,14 +1,15 @@
 {
   "name": "EXT-Librespot",
-  "version": "1.0.1",
-  "rev": "220427",
+  "version": "1.0.2",
+  "rev": "220805",
   "description": "Librespot plugins for EXT-Spotify.",
   "main": "EXT-Librespot.js",
   "scripts": {
     "preinstall": "installer/preinstall.sh",
     "postinstall": "installer/postinstall.sh",
     "update": "installer/update.sh",
-    "setup": "installer/setup.sh"
+    "setup": "installer/setup.sh",
+    "remove": "installer/remove.sh"
   },
   "keywords": [
     "magic mirror",
