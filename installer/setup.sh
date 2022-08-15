@@ -22,7 +22,7 @@ cd "$Installer_dir"
 source utils.sh
 # module name
 Installer_info "Welcome to EXT-Librespot setup"
-Installer_info "This installer will install librespot v0.3.1 release"
+Installer_info "This installer will install librespot v0.4.2 release"
 echo
 
 # check dependencies
@@ -34,7 +34,7 @@ Installer_success "All Dependencies needed are installed !"
 echo
 cd ../components
 Installer_info "Cloning repository..."
-git clone -b v0.3.1 https://github.com/librespot-org/librespot
+git clone -b v0.4.2 https://github.com/librespot-org/librespot
 Installer_success "Done."
 echo
 Installer_info "Installing Rust..."
