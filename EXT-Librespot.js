@@ -1,8 +1,8 @@
 /**
- ** Module : EXT-Librespot
+ ** Module: EXT-Librespot
  ** @bugsounet
- ** ©03-2022
- ** support: http://forum.bugsounet.fr
+ ** ©03-2023
+ ** support: https://forum.bugsounet.fr
  **/
 
 Module.register("EXT-Librespot", {
@@ -13,6 +13,10 @@ Module.register("EXT-Librespot", {
     deviceName: "MagicMirror",
     minVolume: 50,
     maxVolume: 100
+  },
+
+  start: function () {
+    this.ready = false
   },
 
   getDom: function() {
@@ -37,14 +41,15 @@ Module.register("EXT-Librespot", {
 
   notificationReceived: function(noti, payload, sender) {
     switch(noti) {
-      case "DOM_OBJECTS_CREATED":
-        this.sendSocketNotification("INIT", this.config)
-        break
-      case "GAv5_READY":
-        if (sender.name == "MMM-GoogleAssistant") this.sendNotification("EXT_HELLO", this.name)
+      case "GW_READY":
+        if (sender.name == "Gateway") {
+          this.sendSocketNotification("INIT", this.config)
+          this.ready = true
+          this.sendNotification("EXT_HELLO", this.name)
+        }
         break
       case "EXT_PLAYER-SPOTIFY_RECONNECT":
-        this.sendSocketNotification("PLAYER-RECONNECT")
+        if (this.ready) this.sendSocketNotification("PLAYER-RECONNECT")
         break
     }
   },
@@ -59,7 +64,7 @@ Module.register("EXT-Librespot", {
     }
   },
 
-  getCommands: function(commander) {
+  EXT_TELBOTCommands: function(commander) {
     commander.add({
       command: "librespot",
       description: this.translate("TBRestart"),

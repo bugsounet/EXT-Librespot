@@ -1,10 +1,10 @@
 # EXT-Librespot
 
-EXT-Librespot is a module for the [MagicMirror](https://github.com/MichMich/MagicMirror) project by [Michael Teeuw](https://github.com/MichMich).
+EXT-Librespot is a plugin for `MMM-GoogleAssistant`
 
-This module show current playback of any devices
+This plugin play current playback on your mirror
 
-This module is an Extented plugins for `EXT-Spotify`
+This plugin is an Extented plugins for `EXT-Spotify`
 
 * In addition, you can use some plugins:
 * `EXT-Alert` for display some information or error on your screen (Optional)
@@ -18,4 +18,3 @@ New forum and support for all @bugsounet modules is now localized [there](https:
 
 # Donate
  [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TTHRH94Y4KL36&source=url), if you love this module !
-
