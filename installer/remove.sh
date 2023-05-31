@@ -22,7 +22,7 @@ cd "$Installer_dir"
 source utils.sh
 # module name
 Installer_info "Welcome to EXT-Librespot"
-Installer_info "This installer will remove librespot v0.3.1 release"
+Installer_info "This installer will remove librespot folder"
 echo
 
 echo

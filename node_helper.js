@@ -49,7 +49,7 @@ module.exports = NodeHelper.create({
   Librespot: function(restart= false) {
     this.pm2 = pm2
     var file = "librespot"
-    var filePath = path.resolve(__dirname, "components/librespot/target/release", file)
+    var filePath = path.resolve(__dirname, "components/librespot", file)
     var cacheDir = __dirname + "/components/librespot/cache"
     if (!fs.existsSync(filePath)) {
       console.error("[LIBRESPOT] Librespot is not installed !")
@@ -90,7 +90,7 @@ module.exports = NodeHelper.create({
             "--password", this.config.password,
             "--initial-volume", this.config.maxVolume,
             "--cache", cacheDir,
-            "--volume-range", "50"
+            "--volume-ctrl", "cubic"
           ]
         }, (err, proc) => {
           if (err) {
