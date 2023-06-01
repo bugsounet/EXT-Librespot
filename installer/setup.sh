@@ -46,7 +46,7 @@ Installer_success "Done."
 echo
 
 Installer_info "Copy Librespot binary file..."
-cp /usr/bin/echo components/librespot/librespot || {
+cp /usr/bin/librespot components/librespot/librespot || {
   Installer_error "Copy error !"
   exit 255
 }
