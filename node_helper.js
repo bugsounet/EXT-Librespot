@@ -98,7 +98,8 @@ module.exports = NodeHelper.create({
             "--password", this.config.password,
             "--initial-volume", this.config.maxVolume,
             "--cache", cacheDir,
-            "--volume-ctrl", "cubic"
+            "--volume-ctrl", "cubic",
+            "--volume-range", "40"
           ]
         }, (err, proc) => {
           if (err) {
