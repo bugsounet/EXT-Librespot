@@ -9,7 +9,7 @@
     "postinstall": "installer/postinstall.sh",
     "update": "installer/update.sh",
     "setup": "installer/setup.sh",
-    "remove": "installer/remove.sh",
+    "setup:source": "installer/setup-from-source.sh",
     "reset": "git reset --hard",
     "clean": "rm -rf node_modules package-lock.json"
   },

@@ -31,9 +31,12 @@ cd ..
 # module name
 Installer_module="$(grep -Eo '\"name\"[^,]*' ./package.json | grep -Eo '[^:]*$' | awk  -F'\"' '{print $2}')"
 
+Installer_warning "Don't forget to run `npm run setup` to install `Librespot` player"
+echo
 
 # the end...
 Installer_warning "Support is now moved in a dedicated Server: https://forum.bugsounet.fr"
 Installer_warning "@bugsounet"
+
 echo
 Installer_success "$Installer_module is now installed !"
