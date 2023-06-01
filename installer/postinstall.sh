@@ -31,7 +31,7 @@ cd ..
 # module name
 Installer_module="$(grep -Eo '\"name\"[^,]*' ./package.json | grep -Eo '[^:]*$' | awk  -F'\"' '{print $2}')"
 
-Installer_warning "Don't forget to run `npm run setup` to install `Librespot` player"
+Installer_warning "Don't forget to run 'npm run setup' to install Librespot player"
 echo
 
 # the end...
