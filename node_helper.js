@@ -49,16 +49,24 @@ module.exports = NodeHelper.create({
   Librespot: function(restart= false) {
     this.pm2 = pm2
     var file = "librespot"
-    var filePath = path.resolve(__dirname, "components/librespot/target/release", file)
+    var filePath = null
+    var LibrespotPath = path.resolve(__dirname, "components/librespot", file)
+    var LibrespotPathOld = path.resolve(__dirname, "components/librespot/target/release", file)
     var cacheDir = __dirname + "/components/librespot/cache"
+
+    /** back compatibility **/
+    if (fs.existsSync(LibrespotPath)) filePath = LibrespotPath
+    else if (fs.existsSync(LibrespotPathOld)) filePath = LibrespotPathOld
+
     if (!fs.existsSync(filePath)) {
-      console.error("[LIBRESPOT] Librespot is not installed !")
+      console.error("[LIBRESPOT] Librespot is not installed!")
+      console.error("[LIBRESPOT] Please run `npm run setup` in EXT-Librespot Folder!")
       this.sendSocketNotification("WARNING" , { message: "LibrespotNoInstalled" })
       return
     }
+    else console.log("[LIBRESPOT] Found Librespot in", filePath)
     this.pm2.connect((err) => {
       if (err) return console.error("[LIBRESPOT]", err)
-      logLibrespot("Connected!")
       this.pm2.list((err,list) => {
         if (err) return console.error("[LIBRESPOT]", err)
         if (list && Object.keys(list).length > 0) {
@@ -76,7 +84,7 @@ module.exports = NodeHelper.create({
                 })
               }
               if (deleted || restart) return
-              else return logLibrespot("Librespot already launched")
+              else return console.log("[LIBRESPOT] Librespot already started!")
             }
           }
         }
@@ -90,7 +98,8 @@ module.exports = NodeHelper.create({
             "--password", this.config.password,
             "--initial-volume", this.config.maxVolume,
             "--cache", cacheDir,
-            "--volume-range", "50"
+            "--volume-ctrl", "cubic",
+            "--volume-range", "40"
           ]
         }, (err, proc) => {
           if (err) {

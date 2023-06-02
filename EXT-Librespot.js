@@ -11,7 +11,7 @@ Module.register("EXT-Librespot", {
     email: null,
     password: null,
     deviceName: "MagicMirror",
-    minVolume: 50,
+    minVolume: 40,
     maxVolume: 100
   },
 

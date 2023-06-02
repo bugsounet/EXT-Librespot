@@ -20,55 +20,51 @@ Installer_dir="$(Installer_get_current_dir)"
 # move to installler directory
 cd "$Installer_dir"
 source utils.sh
-cd ..
-
 # module name
 Installer_info "Welcome to EXT-Librespot setup"
-Installer_info "This installer will install librespot from raspotify packet"
+Installer_info "This installer will install librespot v0.4.2 release"
 echo
 
 # check dependencies
-dependencies=(curl)
+dependencies=(build-essential libasound2-dev librust-alsa-sys-dev)
 Installer_info "Checking all dependencies..."
 Installer_update_dependencies
 Installer_success "All Dependencies needed are installed !"
 
 echo
-
-# install raspotify
-Installer_info "Install Raspotify..."
-(curl -sL https://dtcooper.github.io/raspotify/install.sh | sh) || {
-  Installer_error "Error detected !"
-  exit 255
-}
+cd ../components
+Installer_info "Cloning repository..."
+git clone -b v0.4.2 -c advice.detachedHead=false https://github.com/librespot-org/librespot sources
 Installer_success "Done."
 
 echo
 
+Installer_info "Installing Rust..."
+curl https://sh.rustup.rs -sSf | sh -s -- --profile default -y
+source $HOME/.cargo/env
+Installer_success "Done."
+
+echo
+
+Installer_info "Installing Librespot..."
+Installer_warning "Open the fridge and take a beer..."
+Installer_warning "It could takes ~30 minutes."
+cd sources
+cargo build --release --no-default-features --features alsa-backend || {
+  Installer_error "Error detected !"
+  exit 255
+}
+
+echo
+cd ..
+
 Installer_info "Copy Librespot binary file..."
-cp /usr/bin/librespot components/librespot/librespot || {
+cp sources/target/release/librespot librespot/librespot || {
   Installer_error "Copy error !"
   exit 255
 }
 Installer_success "Done."
 
 echo
-
-Installer_info "Remove Raspotify..."
-sudo apt-get remove raspotify -y || {
-  Installer_error "Remove error !"
-  exit 255
-}
-Installer_success "Done."
-
-echo
-
-Installer_info "Clean apt..."
-sudo rm -f /etc/apt/sources.list.d/raspotify.list
-sudo apt-get update
-Installer_success "Done."
-
-echo
-
 
 Installer_press_enter_to_continue

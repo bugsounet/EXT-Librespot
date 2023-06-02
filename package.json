@@ -1,7 +1,7 @@
 {
   "name": "EXT-Librespot",
-  "version": "1.1.0",
-  "rev": "230326",
+  "version": "1.2.0",
+  "rev": "230601",
   "description": "Librespot plugins for EXT-Spotify.",
   "main": "EXT-Librespot.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "postinstall": "installer/postinstall.sh",
     "update": "installer/update.sh",
     "setup": "installer/setup.sh",
-    "remove": "installer/remove.sh",
+    "setup:source": "installer/setup-from-source.sh",
     "reset": "git reset --hard",
     "clean": "rm -rf node_modules package-lock.json"
   },
