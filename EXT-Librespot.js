@@ -1,7 +1,7 @@
 /**
  ** Module: EXT-Librespot
  ** @bugsounet
- ** ©03-2023
+ ** ©07-2023
  ** support: https://forum.bugsounet.fr
  **/
 
@@ -35,7 +35,8 @@ Module.register("EXT-Librespot", {
       nl: "translations/nl.json",
       pt: "translations/pt.json",
       ko: "translations/ko.json",
-      el: "translations/el.json"
+      el: "translations/el.json",
+      "zh-cn": "translations/zh-cn.json"
     }
   },
 
