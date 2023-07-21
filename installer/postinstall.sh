@@ -20,8 +20,11 @@ Installer_dir="$(Installer_get_current_dir)"
 cd "$Installer_dir"
 source utils.sh
 
-Installer_info "Minify Main code"
-node minify.js
+Installer_info "Minify Main code..."
+node minify.js || {
+  Installer_error "Minify Failed!"
+  exit 255
+}
 Installer_success "Done"
 echo
 
@@ -37,6 +40,5 @@ echo
 # the end...
 Installer_warning "Support is now moved in a dedicated Server: https://forum.bugsounet.fr"
 Installer_warning "@bugsounet"
-
 echo
 Installer_success "$Installer_module is now installed !"
