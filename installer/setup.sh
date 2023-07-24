@@ -30,7 +30,7 @@ echo
 # check dependencies
 dependencies=(curl)
 Installer_info "Checking all dependencies..."
-Installer_update_dependencies
+Installer_update_dependencies || exit 255
 Installer_success "All Dependencies needed are installed !"
 
 echo
@@ -69,6 +69,5 @@ sudo apt-get update
 Installer_success "Done."
 
 echo
-
 
 Installer_press_enter_to_continue

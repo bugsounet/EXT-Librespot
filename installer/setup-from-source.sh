@@ -28,7 +28,7 @@ echo
 # check dependencies
 dependencies=(build-essential libasound2-dev librust-alsa-sys-dev)
 Installer_info "Checking all dependencies..."
-Installer_update_dependencies
+Installer_update_dependencies || exit 255
 Installer_success "All Dependencies needed are installed !"
 
 echo
@@ -40,8 +40,13 @@ Installer_success "Done."
 echo
 
 Installer_info "Installing Rust..."
-curl https://sh.rustup.rs -sSf | sh -s -- --profile default -y
-source $HOME/.cargo/env
+{
+  curl https://sh.rustup.rs -sSf | sh -s -- --profile default -y
+  source $HOME/.cargo/env
+} || {
+  Installer_error "Error detected !"
+  exit 255
+}
 Installer_success "Done."
 
 echo
