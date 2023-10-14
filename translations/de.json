@@ -1,4 +1,6 @@
 {
   "LibrespotNoInstalled": "librespot ist nicht installiert!",
-  "LibrespotError": "Librespot: {VALUES}"
+  "LibrespotError": "Librespot: {VALUES}",
+  "TBRestart": "Neustart des Librespot-Servers",
+  "TBRestarted": "Server neu gestartet, neue Identifikation geladen."
 }

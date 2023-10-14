@@ -1,7 +1,7 @@
 {
   "name": "EXT-Librespot",
-  "version": "1.2.5",
-  "rev": "231001",
+  "version": "1.2.6",
+  "rev": "231011",
   "description": "Librespot plugins for EXT-Spotify.",
   "main": "EXT-Librespot.js",
   "scripts": {
