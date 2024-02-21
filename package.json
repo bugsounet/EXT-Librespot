@@ -33,7 +33,7 @@
   },
   "homepage": "https://wiki.bugsounet.fr/en/EXT-Librespot",
   "dependencies": {
-    "esbuild": "^0.20.0",
+    "esbuild": "^0.20.1",
     "glob": "^10.3.10",
     "pm2": "^5.3.1"
   }
