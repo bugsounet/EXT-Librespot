@@ -1,7 +1,7 @@
 {
   "name": "EXT-Librespot",
-  "version": "1.3.1",
-  "rev": "240224",
+  "version": "1.4.0",
+  "rev": "240225",
   "description": "Librespot plugins for EXT-Spotify.",
   "main": "EXT-Librespot.js",
   "scripts": {
@@ -11,7 +11,11 @@
     "setup": "installer/setup.sh",
     "setup:source": "installer/setup-from-source.sh",
     "reset": "git reset --hard",
-    "clean": "rm -rf node_modules package-lock.json"
+    "clean": "rm -rf node_modules package-lock.json",
+    "lint": "eslint *.js installer/*.js components/*.js --config eslint.config.js",
+    "lint:fix": "eslint *.js installer/*.js components/*.js --config eslint.config.js --fix",
+    "test": "npm run lint",
+    "test:minify": "cd installer && node minify.js"
   },
   "keywords": [
     "magic mirror",
@@ -20,7 +24,7 @@
     "librespot"
   ],
   "engines": {
-    "node": ">=16.14.0"
+    "node": ">=18"
   },
   "author": "bugsounet",
   "license": "MIT",
@@ -36,5 +40,11 @@
     "esbuild": "^0.20.1",
     "glob": "^10.3.10",
     "pm2": "^5.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^8.57.0",
+    "@stylistic/eslint-plugin": "^1.6.2",
+    "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.29.1"
   }
 }
