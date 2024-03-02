@@ -1,7 +1,7 @@
 /**
  ** Module: EXT-Librespot
  ** @bugsounet
- ** ©07-2023
+ ** ©03-2024
  ** support: https://forum.bugsounet.fr
  **/
 
@@ -15,17 +15,17 @@ Module.register("EXT-Librespot", {
     maxVolume: 100
   },
 
-  start: function () {
-    this.ready = false
+  start () {
+    this.ready = false;
   },
 
-  getDom: function() {
-    var dom = document.createElement("div")
-    dom.style.display = 'none'
-    return dom
+  getDom () {
+    var dom = document.createElement("div");
+    dom.style.display = "none";
+    return dom;
   },
 
-  getTranslations: function() {
+  getTranslations () {
     return {
       en: "translations/en.json",
       fr: "translations/fr.json",
@@ -38,44 +38,44 @@ Module.register("EXT-Librespot", {
       el: "translations/el.json",
       "zh-cn": "translations/zh-cn.json",
       tr: "translations/tr.json"
-    }
+    };
   },
 
-  notificationReceived: function(noti, payload, sender) {
+  notificationReceived (noti, payload, sender) {
     switch(noti) {
       case "GA_READY":
-        if (sender.name == "MMM-GoogleAssistant") {
-          this.sendSocketNotification("INIT", this.config)
-          this.ready = true
-          this.sendNotification("EXT_HELLO", this.name)
+        if (sender.name === "MMM-GoogleAssistant") {
+          this.sendSocketNotification("INIT", this.config);
+          this.ready = true;
+          this.sendNotification("EXT_HELLO", this.name);
         }
-        break
+        break;
       case "EXT_PLAYER-SPOTIFY_RECONNECT":
-        if (this.ready) this.sendSocketNotification("PLAYER-RECONNECT")
-        break
+        if (this.ready) this.sendSocketNotification("PLAYER-RECONNECT");
+        break;
     }
   },
 
-  socketNotificationReceived: function(noti, payload) {
-    if (noti == "WARNING") {
+  socketNotificationReceived (noti, payload) {
+    if (noti === "WARNING") {
       this.sendNotification("EXT_ALERT", {
         type: "warning",
-        message: this.translate(payload.message, {VALUES: payload.values}),
+        message: this.translate(payload.message, { VALUES: payload.values }),
         icon: "modules/EXT-Librespot/resources/Spotify-Logo.png"
-      })
+      });
     }
   },
 
-  EXT_TELBOTCommands: function(commander) {
+  EXT_TELBOTCommands (commander) {
     commander.add({
       command: "librespot",
       description: this.translate("TBRestart"),
       callback: "tbLibrespot"
-    })
+    });
   },
 
-  tbLibrespot: function(command, handler) {
-    this.sendSocketNotification("PLAYER-REFRESH")
-    handler.reply("TEXT", this.translate("TBRestarted"))
+  tbLibrespot (command, handler) {
+    this.sendSocketNotification("PLAYER-REFRESH");
+    handler.reply("TEXT", this.translate("TBRestarted"));
   }
-})
+});
