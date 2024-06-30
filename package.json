@@ -1,12 +1,12 @@
 {
   "name": "EXT-Librespot",
-  "version": "1.4.1",
-  "rev": "240323",
+  "version": "1.5.0",
+  "rev": "240701",
   "description": "Librespot plugins for EXT-Spotify.",
   "main": "EXT-Librespot.js",
   "scripts": {
     "preinstall": "installer/preinstall.sh",
-    "postinstall": "installer/postinstall.sh -m -b",
+    "postinstall": "installer/postinstall.sh -m",
     "update": "installer/update.sh",
     "setup": "installer/setup.sh",
     "setup:source": "installer/setup-from-source.sh",
@@ -25,12 +25,12 @@
     "librespot"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "author": "bugsounet",
   "license": "MIT",
   "bugs": {
-    "url": "https://forum.bugsounet.fr"
+    "url": "https://github.com/bugsounet/EXT-Librespot/issues"
   },
   "repository": {
     "type": "git",
